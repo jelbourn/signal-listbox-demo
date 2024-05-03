@@ -1,0 +1,33 @@
+<style>
+  :host {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+  }
+</style>
+
+<main>
+  <h1>Hello, {{ title }}</h1>
+  <hr>
+
+  <jm-listbox #listbox
+      [(value)]="selectedTopping"
+      [orientation]="orientation()"
+      (orientationChange)="logOrientationChange($event)"
+      (valueChange)="logValueChange($event)">
+    <jm-option value="onion">Onion</jm-option>
+    <jm-option value="tomato">Tomato</jm-option>
+    <jm-option value="garlic">Garlic</jm-option>
+    <jm-option value="pepper">Pepper</jm-option>
+  </jm-listbox>
+
+  <hr>
+  <p>Listbox value: {{listbox.value()}}</p>
+  <p>selectedTopping: {{selectedTopping}}</p>
+  <button type="button" (click)="toggleOrientation()">
+    Change orientation
+  </button>
+</main>
+
+
+<router-outlet />
